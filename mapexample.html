@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <!--
+    Include the maps javascript with sensor=true because this code is using a
+    sensor (a GPS locator) to determine the user's location.
+    See: https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
+    -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+
+    <script>
+// Note: This example requires that you consent to location sharing when
+// prompted by your browser. If you see a blank space instead of the map, this
+// is probably because you have denied permission for location sharing.
+
+var map;
+var lati;
+var longi;
+
+function initialize() {
+
+	createDatabase();
+
+  var mapOptions = {
+    zoom: 6
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+	  var lati = position.coords.latitude;
+	  var longi = position.coords.longitude;
+	  
+	  // Display current position
+	  var x = document.getElementById("currentLocation");
+	  x.innerHTML="Your Position: lat = " + lati + " lon = " + longi;
+		
+	  // Current position
+	  var marker = new google.maps.Marker({
+		position: pos,
+		map: map,
+		title: 'You are here!'
+	  });
+	  
+	  google.maps.event.addListener(marker, 'click', function() {
+		map.setZoom(8);
+		map.setCenter(marker.getPosition());
+	  });
+	  		
+      var infowindow = new google.maps.InfoWindow({
+        content: 'You are here!' //pos.lat() + " " + pos.lng()
+      });
+	infowindow.open(map, marker);
+
+      map.setCenter(pos);
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
+  }
+}
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(60, 105),
+    content: content
+  };
+
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+}
+
+var db;
+
+function createDatabase()
+{
+	var dbSize = 5 * 1024 * 1024; // 5MB
+	db = openDatabase("myDatabase", "1", "Location manager", dbSize);
+	
+	db.transaction(function(tx) {
+		tx.executeSql("CREATE TABLE IF NOT EXISTS " +
+           "Locations(ID INTEGER PRIMARY KEY ASC, City TEXT, Latitude NUMERIC, Longitude NUMERIC)", []);
+	});
+	
+	// Insert current location into table
+	//db.transaction(function(tx){
+		//tx.executeSql("INSERT INTO Locations(City, Latitude, Longitude) VALUES (?,?,?)",
+			//["Searcy", lati, longi]);
+	//});	  
+
+	db.transaction(function(tx) {
+		tx.executeSql("SELECT * FROM Locations", [], loadLocationItems);
+	});
+	
+	//db.transaction(function(tx) {
+		//tx.executeSql("DELETE FROM Locations", []);
+	//});
+
+}
+
+function loadLocationItems(tx, rs) {
+  var rowOutput = "";
+  for (var i=0; i < rs.rows.length; i++) {
+    rowOutput += rs.rows.item(i).City + " " +
+		rs.rows.item(i).Latitude + " " +
+		rs.rows.item(i).Longitude + "\n";
+		
+		var marker = new google.maps.Marker({
+		position: new google.maps.LatLng(rs.rows.item(i).Latitude, rs.rows.item(i).Longitude),
+		map: map,
+		title: rs.rows.item(i).City
+		});
+		
+      var infowindow = new google.maps.InfoWindow({
+        content: rs.rows.item(i).City
+	    });
+		infowindow.open(map, marker);
+  }
+  
+  console.log(rowOutput);
+}
+
+function addLocation() {	
+	if(document.getElementById("Location").value == "" 
+		|| document.getElementById("Latitude").value == "" 
+		|| document.getElementById("Longitude").value == "") {
+			alert('Please fill in all fields');
+	}
+	else if(isNaN(document.getElementById("Latitude").value)) {
+		alert('Please enter a Latitude number between 85 to -85 and the Longitude number between 180 to -180');
+	}
+	else if(isNaN(document.getElementById("Longitude").value)) {
+		alert('Please enter a Latitude number between 85 to -85 and the Longitude number between 180 to -180');
+	}
+	else if(document.getElementById("Latitude").value > 85 || document.getElementById("Latitude").value < -85 ||
+		    document.getElementById("Longitude").value > 180 || document.getElementById("Longitude").value < -180) {
+		alert('Please enter a Latitude number between 85 to -85 and the Longitude number between 180 to -180');
+	}
+	else {		
+		var city = document.getElementById("Location").value;
+		var latitude = document.getElementById("Latitude").value;
+		var longitude = document.getElementById("Longitude").value;
+		
+		db.transaction(function(tx){
+			var addedOn = new Date();
+			tx.executeSql("INSERT INTO Locations(City, Latitude, Longitude) VALUES (?,?,?)",
+				[city, latitude, longitude]);
+		});	  
+		location.reload();
+	}
+}
+
+function clearAll() {	
+	db.transaction(function(tx) {
+		tx.executeSql("DELETE FROM Locations", []);
+	});
+	
+	location.reload();
+}
+
+// Checks if input is only numbers, period, and negative sign
+function isNumberKey(evt)
+       {
+          var charCode = (evt.which) ? evt.which : event.keyCode;
+          if (charCode != 47 && charCode > 44 && charCode < 58)
+             return true;
+
+          return false;
+       }
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+	<p id="currentLocation">Your Position: lat = lon = </p>
+	<div>
+		<input type="text" id="Location" name="LocationName" placeholder="Name of place">
+		<input type="text" id="Latitude" onkeypress="return isNumberKey(event)" name="Latitude" placeholder="Latitude">
+		<input type="text" id="Longitude" onkeypress="return isNumberKey(event)" name="Longitude" placeholder="Longitude">
+		<button onclick="addLocation()">Add</button>
+	</div>
+	<div>
+		<button onclick="clearAll()">Clear All</button>
+	</div>
+	<br>
+    <div id="map-canvas"></div>
+  </body>
+</html>

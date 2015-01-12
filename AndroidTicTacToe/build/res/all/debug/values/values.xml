@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- From: file:/C:/Users/Thane%20Durey/Desktop/AndroidTicTacToe/res/values/arrays.xml -->
+    <eat-comment />
+
+    <string-array name="list_difficulty_level">
+        <item>@string/difficulty_easy</item>
+        <item>@string/difficulty_harder</item>
+        <item>@string/difficulty_expert</item>
+    </string-array>
+    <string-array name="list_goes_first">
+        <item>@string/goes_first_human</item>
+        <item>@string/goes_first_computer</item>
+        <item>@string/goes_first_alternate</item>
+    </string-array>
+    <!-- From: file:/C:/Users/Thane%20Durey/Desktop/AndroidTicTacToe/res/values/dimens.xml -->
+    <eat-comment />
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/C:/Users/Thane%20Durey/Desktop/AndroidTicTacToe/res/values/strings.xml -->
+    <eat-comment />
+
+    <string name="app_name">Android Tic-Tac-Toe</string>
+    <string name="difficulty_choose">Choose a difficulty level:</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_expert">Expert</string>
+    <string name="difficulty_harder">Harder</string>
+    <string name="first_computer">Android will go first.</string>
+    <string name="first_human">You go first.</string>
+    <string name="game_settings">Settings</string>
+    <string name="goes_first_alternate">Alternate</string>
+    <string name="goes_first_computer">Android</string>
+    <string name="goes_first_human">Human</string>
+    <string name="new_game">New Game</string>
+    <string name="result_computer_wins">Android won!</string>
+    <string name="result_human_wins">You won!</string>
+    <string name="result_tie">It\'s a tie.</string>
+    <string name="score_label_computer">Android:</string>
+    <string name="score_label_human">Human:</string>
+    <string name="score_label_tie">Ties:</string>
+    <string name="turn_computer">Android\'s turn.</string>
+    <string name="turn_human">Your turn.</string>
+    <!-- From: file:/C:/Users/Thane%20Durey/Desktop/AndroidTicTacToe/res/values/styles.xml -->
+    <eat-comment />
+
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+</resources>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res" >
+            <file
+                name="board_animation"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\anim\board_animation.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="message_animation"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\anim\message_animation.xml"
+                qualifiers=""
+                type="anim" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\drawable-hdpi\ic_launcher.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\drawable-mdpi\ic_launcher.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="o_img"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\drawable-mdpi\o_img.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="x_img"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\drawable-mdpi\x_img.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\drawable-xhdpi\ic_launcher.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\drawable-xxhdpi\ic_launcher.png"
+                qualifiers="xxhdpi"
+                type="drawable" />
+            <file
+                name="activity_game"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\layout\activity_game.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_game"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\layout\fragment_game.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="fragment_game"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\layout-land\fragment_game.xml"
+                qualifiers="land"
+                type="layout" />
+            <file
+                name="game_options"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\menu\game_options.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="cheer"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\raw\cheer.wav"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="lose"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\raw\lose.wav"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="swish"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\raw\swish.mp3"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="sword"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\raw\sword.mp3"
+                qualifiers=""
+                type="raw" />
+            <file
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\values\arrays.xml"
+                qualifiers="" >
+                <string-array name="list_goes_first" >
+                    <item>
+@string/goes_first_human
+                    </item>
+                    <item>
+@string/goes_first_computer
+                    </item>
+                    <item>
+@string/goes_first_alternate
+                    </item>
+                </string-array>
+                <string-array name="list_difficulty_level" >
+                    <item>
+@string/difficulty_easy
+                    </item>
+                    <item>
+@string/difficulty_harder
+                    </item>
+                    <item>
+@string/difficulty_expert
+                    </item>
+                </string-array>
+            </file>
+            <file
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\values\dimens.xml"
+                qualifiers="" >
+                <dimen name="activity_horizontal_margin" >16dp
+                </dimen>
+                <dimen name="activity_vertical_margin" >16dp
+                </dimen>
+            </file>
+            <file
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\values\strings.xml"
+                qualifiers="" >
+                <string name="goes_first_human" >Human
+                </string>
+                <string name="score_label_tie" >Ties:
+                </string>
+                <string name="difficulty_harder" >Harder
+                </string>
+                <string name="result_computer_wins" >Android won!
+                </string>
+                <string name="goes_first_computer" >Android
+                </string>
+                <string name="first_human" >You go first.
+                </string>
+                <string name="score_label_human" >Human:
+                </string>
+                <string name="result_tie" >It\'s a tie.
+                </string>
+                <string name="turn_human" >Your turn.
+                </string>
+                <string name="turn_computer" >Android\'s turn.
+                </string>
+                <string name="difficulty_easy" >Easy
+                </string>
+                <string name="score_label_computer" >Android:
+                </string>
+                <string name="app_name" >Android Tic-Tac-Toe
+                </string>
+                <string name="game_settings" >Settings
+                </string>
+                <string name="result_human_wins" >You won!
+                </string>
+                <string name="difficulty_expert" >Expert
+                </string>
+                <string name="goes_first_alternate" >Alternate
+                </string>
+                <string name="new_game" >New Game
+                </string>
+                <string name="difficulty_choose" >Choose a difficulty level:
+                </string>
+                <string name="first_computer" >Android will go first.
+                </string>
+            </file>
+            <file
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\values\styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\values-sw720dp-land\dimens.xml"
+                qualifiers="sw720dp-land" >
+                <dimen name="activity_horizontal_margin" >128dp
+                </dimen>
+            </file>
+            <file
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\values-v11\styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\values-v14\styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+                </style>
+            </file>
+            <file
+                name="preferences"
+                path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\res\xml\preferences.xml"
+                qualifiers=""
+                type="xml" />
+        </source>
+        <source path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\build\res\rs\debug" />
+        <source path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\build\res\generated\debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="C:\Users\Thane Durey\Desktop\AndroidTicTacToe\build-types\debug\res" />
+    </dataSet>
+
+</merger>
